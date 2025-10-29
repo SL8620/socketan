@@ -1,0 +1,22 @@
+# ======================
+# ROS 2 colcon 构建目录
+# ======================
+# 忽略根目录的 build/ install/ log/
+/build/
+/install/
+/log/
+
+# 忽略所有子包的 build/ install/ log/
+**/build/
+**/install/
+**/log/
+
+# ======================
+# CMake 临时文件
+# ======================
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.ninja
+*.cbp
