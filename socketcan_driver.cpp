@@ -63,16 +63,6 @@ bool SocketCanDriver::start() {
     recv_thread_ = std::thread(&SocketCanDriver::recvThread, this);
     send_thread_ = std::thread(&SocketCanDriver::sendThread, this);
 
-    // Set real-time priority for threads (assuming system has RT patches)
-    struct sched_param param;
-    param.sched_priority = 50;  // Adjust priority as needed (1-99 for SCHED_FIFO)
-    if (sched_setscheduler(recv_thread_.native_handle(), SCHED_FIFO, &param) != 0) {
-        std::cerr << "Warning: Failed to set RT priority for recv thread: " << strerror(errno) << std::endl;
-    }
-    if (sched_setscheduler(send_thread_.native_handle(), SCHED_FIFO, &param) != 0) {
-        std::cerr << "Warning: Failed to set RT priority for send thread: " << strerror(errno) << std::endl;
-    }
-
     return true;
 }
 

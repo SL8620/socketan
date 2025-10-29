@@ -15,7 +15,6 @@
 #include <sys/ioctl.h>
 #include <sys/socket.h>
 #include <unistd.h>
-#include <sched.h>  // For real-time scheduling
 
 // Callback type for received CAN frames
 using CanFrameCallback = std::function<void(const struct can_frame&)>;
